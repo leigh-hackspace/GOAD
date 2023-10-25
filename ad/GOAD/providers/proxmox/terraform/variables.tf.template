@@ -21,3 +21,11 @@ variable "pm_pool" {
 variable "pm_full_clone" {
   default = false
 }
+
+variable "pm_net_bridge" {
+  default = "vmbr3"
+}
+
+variable "pm_net_vlan" {
+  default = "10"
+}

@@ -12,11 +12,11 @@ resource "proxmox_vm_qemu" "dc01" {
     clone = "WinServer2019x64-cloudinit-qcow2"
     full_clone = var.pm_full_clone
 
-   network {
-     bridge    = "vmbr3"
-     model     = "e1000"
-     tag       = 10
-   }
+    network {
+      bridge    = var.pm_net_bridge
+      model     = "e1000"
+      tag       = var.pm_net_vlan
+    }
     lifecycle {
       ignore_changes = [
         disk,
@@ -40,9 +40,9 @@ resource "proxmox_vm_qemu" "dc02" {
     full_clone = var.pm_full_clone
 
     network {
-      bridge    = "vmbr3"
+      bridge    = var.pm_net_bridge
       model     = "e1000"
-      tag       = 10
+      tag       = var.pm_net_vlan
     }
     lifecycle {
       ignore_changes = [
@@ -69,9 +69,9 @@ resource "proxmox_vm_qemu" "DC03" {
     full_clone = var.pm_full_clone
 
     network {
-      bridge    = "vmbr3"
+      bridge    = var.pm_net_bridge
       model     = "e1000"
-      tag       = 10 
+      tag       = var.pm_net_vlan
     }
     lifecycle {
       ignore_changes = [
@@ -96,9 +96,9 @@ resource "proxmox_vm_qemu" "srv02" {
     full_clone = var.pm_full_clone
 
     network {
-      bridge    = "vmbr3"
+      bridge    = var.pm_net_bridge
       model     = "e1000"
-      tag       = 10
+      tag       = var.pm_net_vlan
     }
     lifecycle {
       ignore_changes = [
@@ -123,9 +123,9 @@ resource "proxmox_vm_qemu" "srv03" {
     full_clone = var.pm_full_clone
 
     network {
-      bridge    = "vmbr3"
+      bridge    = var.pm_net_bridge
       model     = "e1000"
-      tag       = 10
+      tag       = var.pm_net_vlan
     }
     
     lifecycle {
