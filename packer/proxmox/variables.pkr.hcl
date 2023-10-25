@@ -5,6 +5,9 @@ variable "proxmox_skip_tls_verify" {}
 variable "proxmox_node" {}
 variable "proxmox_pool" {}
 variable "proxmox_storage" {}
+variable "proxmox_iso_storage" {}
+variable "proxmox_network_bridge" {}
+variable "proxmox_network_vlan" {}
 variable "winrm_username" {}
 variable "winrm_password" {}
 variable "vm_name" {}

@@ -18,12 +18,12 @@ source "proxmox-iso" "windows" {
   }
   additional_iso_files {
     device   = "sata4"
-    iso_file = "local:iso/virtio-win.iso"
+    iso_file = "${var.proxmox_iso_storage}:iso/virtio-win.iso"
     unmount  = true
   }
   additional_iso_files {
     device   = "sata5"
-    iso_file = "local:iso/scripts_withcloudinit.iso"
+    iso_file = "${var.proxmox_iso_storage}:iso/scripts_withcloudinit.iso"
     unmount  = true
   }
   cloud_init              = true
@@ -40,9 +40,9 @@ source "proxmox-iso" "windows" {
   iso_file                 = "${var.iso_file}"
   memory                   = "${var.vm_memory}"
   network_adapters {
-    bridge = "vmbr3"
+    bridge = "${var.proxmox_network_bridge}"
     model  = "virtio"
-    vlan_tag = "10"
+    vlan_tag = "${var.proxmox_network_vlan}"
   }
   node                 = "${var.proxmox_node}"
   os                   = "${var.os}"
